@@ -1,0 +1,18 @@
+# Alpine
+
+## Set up Alpine
+
+Log in as root (no password), then run the `setup-alpine` command.
+
+```zsh
+setup-alpine -q # -q to run the 'quick' setup
+apk add openssh curl
+rc-update add sshd
+service sshd start
+passwd root # change the password for root
+echo http://dl-cdn.alpinelinux.org/alpine/v3.16/community >> /etc/apk/repositories
+```
+
+## Set up WireGuard
+
+https://www.cyberciti.biz/faq/how-to-set-up-wireguard-vpn-server-on-alpine-linux/

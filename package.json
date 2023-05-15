@@ -1,0 +1,31 @@
+{
+  "name": "docs.macguire.me",
+  "version": "0.0.1",
+  "description": "docs.macguire.me",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macguirerintoul/docs.macguire.me.git"
+  },
+  "author": "Macguire Rintoul <git@macguire.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/macguirerintoul/docs.macguire.me/issues"
+  },
+  "homepage": "https://github.com/macguirerintoul/docs.macguire.me#readme",
+  "dependencies": {
+    "next": "^13.0.6",
+    "nextra": "latest",
+    "nextra-theme-docs": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3"
+  }
+}

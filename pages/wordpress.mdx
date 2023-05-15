@@ -1,0 +1,104 @@
+import { Callout } from 'nextra-theme-docs'
+
+# WordPress
+
+## Cannot create directory when uploading files
+
+<Callout type="warning" emoji="⚠️">
+  The user & group `apache:apache` are specific to RHEL/CentOS systems.
+</Callout> 
+
+```bash
+sudo chown -R apache:apache wordpress 
+```
+
+## `.htaccess` to redirect to subdirectory
+
+<Callout type="warning" emoji="⚠️">
+  By default, Apache doesn't listen to `.htaccess` files; they must be [enabled](/apache#enable-htaccess-files).
+</Callout>  
+
+```apache
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.domain-name.com$
+RewriteCond %{REQUEST_URI} !folder/
+RewriteRule (.*) /folder/$1 [L]
+```
+
+## Dropdown navigation items are always shown
+
+This is caused by submenu `<ul>` elements not having the class `dropdown-menu` which tells Bootstrap to hide the element unless hovered. 
+
+Check for a custom `class-walker-nav-menu.php` in `wp-includes`. This file can be modified to change the output HTML of menu items.
+
+⚠️ Edits should not be made to the file directly, rather it should be [extended](https://developer.wordpress.org/reference/functions/wp_nav_menu/).
+
+For a quick fix, add `dropdown-menu` to the `$classes` variable in the `start_lvl` function.
+
+## Gravity Forms CSS issues
+
+When "No-Conflict Mode" is enabled in Gravity Forms settings, the path to Gravity Forms CSS is not set correctly in Chrome.
+
+## Images don't maintain aspect ratio
+
+This is likely due to `width` and/or `height` attributes present on the image which are added by WordPress (not sure why yet). To fix this, use the following CSS (currently in the Custom CSS section of Appearance)
+
+```css
+img[class*="wp-image-"] {
+    height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
+}
+```
+
+## Homepage works, but subpages give a server 404
+
+To get this to work, we need the proper `.htaccess` in the root directory (`/var/www/html`) as well as a second `.htaccess` in the WordPress directory (`/var/www/html/wordpress`) so that WordPress can handle the requests for post names as URLs, which are in the same structure as directories
+
+`/var/www/html`
+
+```
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.domain-name.com$
+RewriteCond %{REQUEST_URI} !folder/
+RewriteRule (.*) /folder/$1 [L]
+```
+
+or
+
+```
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?carmster.com$
+RewriteCond %{REQUEST_URI} !^/wordpress/
+#RewriteCond %{REQUEST_URI} !^/p/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /wordpress/$1
+RewriteCond %{HTTP_HOST} ^(www.)?carmster.com$
+RewriteRule ^(/)?$ wordpress/index.php [L]
+</IfModule>
+```
+
+`/var/www/html/wordpress`
+
+```
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^carmster.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.carmster.com$
+RewriteCond %{REQUEST_URI} !wordpress/
+RewriteRule (.*) /wordpress/$1 [L]
+```
+
+or
+
+```
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+```

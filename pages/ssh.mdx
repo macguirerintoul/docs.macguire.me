@@ -1,0 +1,32 @@
+# SSH
+
+## `ssh-copy-id` with port number
+
+```zsh
+ssh-copy-id -p $PORT user@hostname
+```
+
+## No matching MAC found
+
+[Debug SSH Connection issue in key exchange - Experiencing Technology](https://blog.tinned-software.net/debug-ssh-connection-issue-in-key-exchange/)
+
+## no hostkey alg
+
+```zsh
+# Beginning with Redhat Enterprise Linux and CentOS 7, the default settings for sshd do not create a DSA host key. This can result in the following error: sshd[pid]: fatal: no hostkey alg [preauth]. This can cause session setup failures for older ssh clients. To allow those connections, perform the below steps. Bear in mind that this change was made to improve security, and this workaround allows weaker encryptions on the affected connections.
+
+cd /etc/ssh
+ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+sudo vi /etc/ssh/sshd_config
+# Add this line:
+# HostKey /etc/ssh/ssh_host_dsa_key
+sudo chgrp ssh_keys ssh_host_dsa_key
+# test the ssh configuration
+sudo sshd -t
+# restart sshd
+service sshd restart
+# Then retry the connection with the older client.
+```
+
+[JBY Technologies - Fix The sshd fatal no hostkey alg preauth Error](http://www.jbytechnologies.com/linux/sshd-add-dsa-key.html)
+
