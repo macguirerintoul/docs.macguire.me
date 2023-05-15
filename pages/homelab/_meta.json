@@ -1,0 +1,6 @@
+{
+	"install-proxmox": "Install Proxmox",
+	"get-isos": "Get ISOs",
+	"create-vms": "Create VMs",
+	"configure-vms": "Configure VMs"
+}

@@ -1,0 +1,25 @@
+# macOS
+
+## Install Homebrew
+
+```zsh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+## Install Ansible
+
+```zsh
+brew install ansible
+```
+
+## Clone my Ansible repo
+
+```zsh
+git clone git@github.com:macguirerintoul/ansible.git ~/dev/ansible
+```
+
+## Run the macOS playbook
+
+```zsh
+ansible-playbook ~/dev/ansible/macOS.yml -K
+```

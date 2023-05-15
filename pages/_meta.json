@@ -1,15 +1,12 @@
 {
-  "index": "Home", 
-  "homelab": {
-    "type": "separator",
-    "title": "Homelab"
-  },
-  "prerequisites": "Prerequisites", 
-  "get-isos": "Get ISOs", 
-  "create-vms": "Create VMs", "configure-vms": "Configure VMs", 
-  "topics": {
-    "type": "separator",
-    "title": "Topics"
-  },
-  "firewalld": "firewalld"
+	"setup-section": {
+		"type": "separator",
+		"title": "Setup"
+	},
+	"homelab": "Homelab",
+	"macos": "macOS",
+	"topics-section": {
+		"type": "separator",
+		"title": "Topics"
+	}
 }

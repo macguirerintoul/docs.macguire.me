@@ -1,4 +1,4 @@
-# Get VM ISOs
+# Get ISOs
 
 ```zsh
 cd /var/lib/vz/template/iso
