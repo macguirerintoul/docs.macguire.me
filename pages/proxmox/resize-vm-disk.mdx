@@ -1,0 +1,15 @@
+# Resize VM disk
+
+1. Increase disk space from Proxmox GUI
+2. `sudo fdisk -l`
+3. `sudo cfdisk`
+4. `pvdisplay`
+5. `sudo pvresize /dev/sda3`
+6. `pvdisplay`
+7. `lvdisplay`
+8. `sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv`
+9. `lvdisplay`
+10. `resize2fs /dev/ubuntu-vg/ubuntu-lv`
+11. `fdisk -l`
+
+https://forum.proxmox.com/threads/resize-ubuntu-vm-disk.117810/#post-510089

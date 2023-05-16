@@ -8,10 +8,12 @@
 brew install ansible
 ```
 
-### Linux
+### Debian
 
 ```zsh
-python3 -m pip install --user ansible
+sudo apt-add-repository ppa:ansible/ansible -y
+sudo apt update
+sudo apt install ansible -y
 ```
 
 ## Run a playbook
