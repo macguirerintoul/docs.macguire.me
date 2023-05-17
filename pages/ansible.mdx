@@ -1,11 +1,12 @@
 # Ansible
 
-## Install Ansible
+## Install
 
 ### macOS
 
 ```zsh
 brew install ansible
+pip install ansible-lint # linter, integrates with the VSCode extension
 ```
 
 ### Debian
@@ -16,8 +17,44 @@ sudo apt update
 sudo apt install ansible -y
 ```
 
-## Run a playbook
+## Usage
+
+### Run a playbook
 
 ```zsh
-ansible-playbook $PLAYBOOK_FILE -K
+ansible-playbook $PLAYBOOK_FILE -K # prompts for password for `sudo`
+```
+
+## Syntax
+
+### Loops
+
+```yaml
+- name: Add several users
+  ansible.builtin.user:
+    name: "{{ item }}"
+  loop:
+    - testuser1
+    - testuser2
+```
+
+### Conditionals
+
+```yaml
+- ansible.builtin.command: ls -a
+  register: ls_output
+
+- command: someothercommand
+  when: ls_output.stdout == ""
+```
+
+## Modules
+
+### file
+
+```yaml
+ansible.builtin.file:
+  path: "~/Pictures/Screenshots"
+  state: directory
+  mode: "0755"
 ```

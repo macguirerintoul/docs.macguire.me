@@ -1,25 +1,32 @@
 # macOS
 
-## Install Homebrew
+## First steps
 
 ```zsh
+# Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
 
-## Install Ansible
-
-```zsh
+# Install Ansible
 brew install ansible
-```
 
-## Clone my Ansible repo
-
-```zsh
+# Clone my Ansible playbooks
 git clone git@github.com:macguirerintoul/ansible.git ~/dev/ansible
 ```
+
+## Manual steps
+
+1. Open App Store and log in so that `mas` can be used to install apps
 
 ## Run the macOS playbook
 
 ```zsh
 ansible-playbook ~/dev/ansible/macOS.yml -K
 ```
+
+## Automatable?
+
+- create SSH keys
+- install wireguard profile
+- dock apps
+- auto hide menu bar
+- auto hide dock

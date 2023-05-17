@@ -1,0 +1,17 @@
+import { Callout } from "nextra-theme-docs";
+
+# Python
+
+Python is managed via `asdf`. Ensure that there is no Python installation via Homebrew, otherwise things will be messed up.
+
+<Callout type="info">
+	Vim and other packages installed using Homebrew require Python, so they may
+	try to install it as a dependency if it isn't installed already.
+</Callout>
+
+## Install
+
+```zsh
+asdf plugin-add python
+asdf install python latest
+```
