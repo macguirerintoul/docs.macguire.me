@@ -1,0 +1,18 @@
+# Nginx Proxy Manager
+
+## Default user
+
+```
+admin@example.com
+changeme
+```
+
+## SSL
+
+1. Ensure the domain points to the external IP of the Nginx Proxy Manager host
+2. Ensure the router forwards port 443 to the Nginx Proxy Manager host
+3. Add an SSL certificate in the UI
+4. Enter the domain
+5. Check "Use a DNS challenge"
+6. Create a Cloudflare API token with Edit Zone DNS permissions
+7. Replace the example API token

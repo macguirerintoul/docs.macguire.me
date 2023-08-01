@@ -1,0 +1,22 @@
+# Docker
+
+## Errors
+
+### Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+```zsh
+systemctl start docker
+```
+
+## Portainer
+
+### Install
+
+This script will install Portainer Business Edition, which is free for personal use for up to 5 hosts. Business Edition has more functionality.
+
+```zsh
+docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v portainer_data:/data \
+    portainer/portainer-ee:latest
+```

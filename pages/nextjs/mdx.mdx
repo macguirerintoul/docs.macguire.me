@@ -1,0 +1,9 @@
+# MDX
+
+## [`@next/mdx`](https://github.com/vercel/next.js/tree/canary/packages/next-mdx)
+
+Next.js provides [built-in support](https://nextjs.org/docs/pages/building-your-application/configuring/mdx) for creating pages from MDX files, though it doesn't seem to support anything complex. Exported metadata can't be read from `Layout` except with a plugin, which seems to kind of defeat the whole purpose of using Next.js built-in MDX. You'll also need to iterate through the directory to get all the slugs, which seems like the same amount of work as using something else.
+
+## [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote)
+
+Use `next-mdx-remote` if you need to do fancy things like use frontmatter in the page or display the content from several MDX files in one page.

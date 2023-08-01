@@ -1,22 +1,23 @@
-import { Callout } from 'nextra-theme-docs'
+import { Callout } from "nextra-theme-docs";
 
 # WordPress
 
 ## Cannot create directory when uploading files
 
-<Callout type="warning" emoji="⚠️">
-  The user & group `apache:apache` are specific to RHEL/CentOS systems.
-</Callout> 
+<Callout type="warning">
+	The user & group `apache:apache` are specific to RHEL/CentOS systems.
+</Callout>{" "}
 
 ```bash
-sudo chown -R apache:apache wordpress 
+sudo chown -R apache:apache wordpress
 ```
 
 ## `.htaccess` to redirect to subdirectory
 
-<Callout type="warning" emoji="⚠️">
-  By default, Apache doesn't listen to `.htaccess` files; they must be [enabled](/apache#enable-htaccess-files).
-</Callout>  
+<Callout type="warning">
+	By default, Apache doesn't listen to `.htaccess` files; they must be
+	[enabled](/apache#enable-htaccess-files).
+</Callout>{" "}
 
 ```apache
 RewriteEngine on
@@ -28,7 +29,7 @@ RewriteRule (.*) /folder/$1 [L]
 
 ## Dropdown navigation items are always shown
 
-This is caused by submenu `<ul>` elements not having the class `dropdown-menu` which tells Bootstrap to hide the element unless hovered. 
+This is caused by submenu `<ul>` elements not having the class `dropdown-menu` which tells Bootstrap to hide the element unless hovered.
 
 Check for a custom `class-walker-nav-menu.php` in `wp-includes`. This file can be modified to change the output HTML of menu items.
 
@@ -46,7 +47,7 @@ This is likely due to `width` and/or `height` attributes present on the image wh
 
 ```css
 img[class*="wp-image-"] {
-    height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
+	height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
 }
 ```
 

@@ -1,0 +1,10 @@
+# TypeScript
+
+## Override an existing type
+
+```ts
+type NewImageProps = Omit<ImageProps, "src" | "alt"> & {
+	src?: ImageProps["src"] | undefined;
+	alt?: ImageProps["alt"] | undefined;
+};
+```

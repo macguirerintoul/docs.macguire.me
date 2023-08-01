@@ -1,0 +1,15 @@
+# CSS
+
+## Disable animations for `prefers-reduced-motion`
+
+To play an animation only if `prefers-reduced-motion` is false, wrap the animation in a media query:
+
+```css
+@media not (prefers-reduced-motion) {
+	animation-name: animate-in;
+	animation-duration: 300ms;
+	animation-delay: calc(var(--animation-order) * 100ms);
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+}
+```

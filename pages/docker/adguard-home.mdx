@@ -1,0 +1,11 @@
+# AdGuard Home
+
+## Use `.lan` domain for local services
+
+### Using pfSense
+
+2. Ensure the only upstream DNS server for AdGuard Home is set to pfSense
+
+###
+
+Under Filters → DNS Rewrites, add a rewrite for `*.lan` to the IP of the Nginx Proxy Manager host.

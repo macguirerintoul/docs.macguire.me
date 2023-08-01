@@ -1,0 +1,26 @@
+# Git
+
+## Submodules
+
+### Add
+
+```zsh
+git submodule add $URL $PATH
+```
+
+### Remove
+
+```zsh
+git rm $PATH_TO_SUBMODULE
+git add .
+git commit
+```
+
+### Cloning a project with submodules
+
+```zsh
+git clone --recurse-submodules $URL
+# or, in directory after cloning:
+git submodule init
+git submodule update
+```

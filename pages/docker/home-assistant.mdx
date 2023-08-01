@@ -1,0 +1,21 @@
+import { Callout } from "nextra-theme-docs";
+
+# Home Assistant
+
+## Reverse proxy
+
+<Callout type="info">
+	The proxy to Home Assistant must have WebSocket support enabled.
+</Callout>
+
+Without proper configuration, Home Assistant will reject requests coming from a proxy with `400: Bad Request`.
+If the proxy server is a Docker container (e.g. Nginx Proxy Manager), the trusted
+proxy must be the IP address assigned to the container by Docker. Add the following
+to `configuration.yml`:
+
+```yml
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - XXX.XXX.XXX.XXX # Docker IP of proxy server
+```
