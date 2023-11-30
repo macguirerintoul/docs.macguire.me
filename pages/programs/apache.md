@@ -17,6 +17,7 @@ sudo service httpd restart
 [mod_rewrite Apache CentOS | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-mod_rewrite-for-apache-on-centos-7)
 
 ## Set up Basic Authentication
+
 ```apache
 # Htpasswd enable directories
 <Directory "/var/www/html/internal">
@@ -39,4 +40,5 @@ sudo service httpd restart
   Allow from all
 </Directory>
 ```
+
 https://www.server-world.info/en/note?os=CentOS_8&p=httpd&f=7

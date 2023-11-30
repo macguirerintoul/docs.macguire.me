@@ -8,8 +8,5 @@
 	"topics-section": {
 		"type": "separator",
 		"title": "Topics"
-	},
-	"alpine": "Alpine",
-	"ansible": "Ansible",
-	"proxmox": "Proxmox"
+	}
 }

@@ -57,7 +57,7 @@ To get this to work, we need the proper `.htaccess` in the root directory (`/var
 
 `/var/www/html`
 
-```
+```apache
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.domain-name.com$
@@ -67,7 +67,7 @@ RewriteRule (.*) /folder/$1 [L]
 
 or
 
-```
+```apache
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^(www.)?carmster.com$
@@ -83,17 +83,7 @@ RewriteRule ^(/)?$ wordpress/index.php [L]
 
 `/var/www/html/wordpress`
 
-```
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^carmster.com$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^www.carmster.com$
-RewriteCond %{REQUEST_URI} !wordpress/
-RewriteRule (.*) /wordpress/$1 [L]
-```
-
-or
-
-```
+```apache
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
@@ -101,5 +91,22 @@ RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
+</IfModule>
+```
+
+## WordPress in subdir with other paths working
+
+https://wordpress.org/documentation/article/giving-wordpress-its-own-directory/
+
+```apache
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?example.com$
+RewriteCond %{REQUEST_URI} !^/my_subdir/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /my_subdir/$1
+RewriteCond %{HTTP_HOST} ^(www.)?example.com$
+RewriteRule ^(/)?$ my_subdir/index.php [L]
 </IfModule>
 ```
