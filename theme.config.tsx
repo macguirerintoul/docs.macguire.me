@@ -32,7 +32,7 @@ const config: DocsThemeConfig = {
 		<PlausibleProvider
 			domain="docs.macguire.me"
 			trackOutboundLinks={true}
-			customDomain="plausible.macguire.me"
+			customDomain="https://plausible.macguire.me"
 			selfHosted={true}
 		>
 			{props.children}
